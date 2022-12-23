@@ -15,6 +15,7 @@ $result = query_or_die_trying($sql);
 if ($result) {
 	$_SESSION["msg"] = "Objetivo adicionado com sucesso";
 	echo $_SESSION['msg'];
+	redirect("index.php");
 	}
 
 else {

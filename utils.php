@@ -15,4 +15,9 @@ function query_or_die_trying($sql) {
 		}
 }
 
+function redirect($url) {
+	header("Location: http://localhost:2001/" . $url);
+	die();
+}
+
 ?>
