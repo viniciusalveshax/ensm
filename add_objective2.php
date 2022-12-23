@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require "utils.php";
 
 $obj_description = $_POST["description"];
@@ -14,7 +16,7 @@ $result = query_or_die_trying($sql);
 
 if ($result) {
 	$_SESSION["msg"] = "Objetivo adicionado com sucesso";
-	echo $_SESSION['msg'];
+	echo $_SESSION["msg"];
 	redirect("index.php");
 	}
 
