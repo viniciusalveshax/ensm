@@ -6,7 +6,9 @@ $obj_description = $_POST["description"];
 
 echo $obj_description;
 
-$sql = "INSERT INTO objectives (description) VALUES (" . $obj_description . ")"; 
+$sql = "INSERT INTO objectives (description) VALUES ('" . $obj_description . "')"; 
+
+echo $sql;
 
 $result = query_or_die_trying($sql);
 
