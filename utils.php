@@ -14,7 +14,8 @@ function query_or_die_trying($sql) {
 		if ($result)
 			return $result;
 		else	{
-			mysqli_error($connection);
+			echo mysqli_error($connection);
+			echo "SQL: " . $sql; 
 			return false;
 			}
 		}
