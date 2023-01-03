@@ -25,4 +25,32 @@ function redirect($url) {
 	die();
 }
 
+function search_table_by_id($table_name, $id) {
+
+	$sql = "SELECT description FROM " . $table_name . " WHERE id = '" . $id . "'";
+
+//	echo $sql;
+
+	$result = query_or_die_trying($sql);
+
+	$line = mysqli_fetch_assoc($result);
+
+	if ($line)
+		$name = $line["description"];
+	else
+		$name = "ERROR";
+
+	
+	
+	return $name;
+}
+
+function context_name($id) {
+
+	$name = search_table_by_id("contexts", $id);
+
+	return $name;
+	
+}
+
 ?>
