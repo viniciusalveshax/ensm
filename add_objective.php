@@ -46,8 +46,9 @@ if ($result) {
 ?>
 </select>
 
-<br />
+<p>
 <input type="submit" value="Cadastrar" />
+</p>
 
 </form>
 
