@@ -11,7 +11,12 @@ function query_or_die_trying($sql) {
 		die("<br />Não encontrou a conexão. Erro fatal. Encerrando ...");
 	else	{
 		$result = mysqli_query($connection, $sql);
-		return $result;
+		if ($result)
+			return $result;
+		else	{
+			mysqli_error($connection);
+			return false;
+			}
 		}
 }
 
