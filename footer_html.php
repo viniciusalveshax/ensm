@@ -1,11 +1,16 @@
 <h2>Ações</h2>
-<ul id="footer">
-<li><a href="add_objective.php">Adicionar objetivo</a></li>
-<li><a href="add_task.php">Adicionar tarefa</a></li>
+<h4>Adicionar</h4>
+<ul class="footer">
+<li><a href="add_context.php">Contexto</a></li>
+<li><a href="add_objective.php">Objetivo</a></li>
+<li><a href="add_task.php">Tarefa</a></li>
+</ul>
 
-<li><a href="list_objectives.php">Listar objetivos</a></li>
-<li><a href="index.php">Listar tarefas</a></li>
-
+<h4>Listar</h4>
+<ul class="footer">
+<li><a href="list_context.php">Contextos</a></li>
+<li><a href="list_objectives.php">Objetivos</a></li>
+<li><a href="index.php">Tarefas</a></li>
 </ul>
 
 </body>

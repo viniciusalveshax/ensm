@@ -13,7 +13,7 @@ h3 {
 	color: red;
 }
 
-#footer li { 
+ul.footer li { 
 	display: inline;
 }
 </style>
