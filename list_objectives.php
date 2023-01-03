@@ -1,8 +1,7 @@
 <?php
 
 require "utils.php";
-
-require "footer_html.php";
+require "header_html.php";
 
 echo "<ul>";
 
