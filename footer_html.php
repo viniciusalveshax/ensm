@@ -8,7 +8,7 @@
 
 <h4>Listar</h4>
 <ul class="footer">
-<li><a href="list_context.php">Contextos</a></li>
+<li><a href="list_contexts.php">Contextos</a></li>
 <li><a href="list_objectives.php">Objetivos</a></li>
 <li><a href="index.php">Tarefas</a></li>
 </ul>
