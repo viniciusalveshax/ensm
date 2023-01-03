@@ -12,6 +12,10 @@ if (!session_id() )
 h3 {
 	color: red;
 }
+
+#footer li { 
+	display: inline;
+}
 </style>
 
 
