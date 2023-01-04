@@ -2,7 +2,7 @@
 <?php 
 
 require "header_html.php";
-
+require "utils.php";
 
 ?>
 
@@ -12,8 +12,32 @@ require "header_html.php";
 
 <?php
 
-echo "<li>Tarefa 1</li>";
-echo "<li>Tarefa 2</li>";
+$sql = "SELECT * from tasks";
+
+$result = query_or_die_trying($sql);
+
+if ($result) {
+
+	$count = mysqli_num_rows($result);
+	echo "Qtdade de resultados: " . $count;
+
+	if ($count >= 0) {
+
+		echo "<ul>";
+
+		while ($line = mysqli_fetch_assoc($result)) {
+			echo "<li>" . $line['description'] . "</li>";
+			}
+
+		echo "</ul>";
+	
+		}
+
+	}
+
+else {
+	echo "Deveria ter morrido";
+	}
 
 ?>
 
