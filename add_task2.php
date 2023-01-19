@@ -6,21 +6,25 @@ require "utils.php";
 
 
 $obj_description = $_POST["description"];
-$context_id = $_POST["context_id"];
-
+$category_id = $_POST["category_id"];
+$day = $_POST["day"];
 
 
 echo $obj_description;
-echo $context_id;
+echo $category_id;
+echo $day;
 
-$sql = "INSERT INTO objectives (description, context_id) VALUES ('" . $obj_description . "','" . $context_id . "')"; 
+if ($day && ($day!="") )
+	$sql = "INSERT INTO tasks (description, category_id, day) VALUES ('" . $obj_description . "','" . $category_id . "', '" . $day . "')"; 
+else
+	$sql = "INSERT INTO tasks (description, category_id) VALUES ('" . $obj_description . "','" . $category_id . "')"; 
 
 echo $sql;
 
 $result = query_or_die_trying($sql);
 
 if ($result) {
-	$_SESSION["msg"] = "Objetivo adicionado com sucesso";
+	$_SESSION["msg"] = "Tarefa adicionada com sucesso";
 	echo $_SESSION["msg"];
 	redirect("index.php");
 	}

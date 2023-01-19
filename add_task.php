@@ -12,12 +12,12 @@ echo "Chegou aqui";
 
 ?>
 
-<h2>Adicionar objetivo</h2>
+<h2>Adicionar tarefa</h2>
 
-<form action="add_objective2.php" method="post">
+<form action="add_task2.php" method="post">
 
 <p>Descrição</p>
-<input type="text" placeholder="Descreva o objetivo" name="description" />
+<input type="text" placeholder="Descreva a tarefa" name="description" />
 
 <p>Categoria</p>
 <?php
@@ -67,6 +67,18 @@ if ($result) {
 }
 
 ?>
+
+<br />Dia da semana
+<select name="day">
+	<option></option>
+	<option value="1">Segunda</option>
+	<option value="2">Terça</option>
+	<option value="3">Quarta</option>
+	<option value="4">Quinta</option>
+	<option value="5">Sexta</option>
+	<option value="6">Sábado</option>
+	<option value="7">Domingo</option>
+</select>
 
 <p>
 <input type="submit" value="Cadastrar" />
