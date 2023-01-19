@@ -54,4 +54,14 @@ function context_name($id) {
 	
 }
 
+
+function category_name($id) {
+
+	$name = search_table_by_id("categories", $id);
+
+	return $name;
+	
+}
+
+
 ?>
