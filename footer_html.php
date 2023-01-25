@@ -19,5 +19,11 @@
 ?>
 </ul>
 
+
+<h4>Outras</h4>
+<ul class="footer">
+	<li><a href="review.php">Revisão</a></li>
+</ul>
+
 </body>
 </html>
