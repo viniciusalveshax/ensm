@@ -55,7 +55,7 @@ if ($result) {
 
 	//$line = mysqli_fetch_assoc($result);
 	
-	echo "<select name=\"objective_id\">";
+	echo "<select name=\"objective_id\"> <option></option>";
 
 	while ($line = mysqli_fetch_assoc($result)) {
 		echo "<option value=" . $line['id'] . ">" . $line['description'] . "</option>";
@@ -68,6 +68,9 @@ if ($result) {
 
 ?>
 
+<br />Data limite
+<input type="text" name="due_date" />
+
 <br />Dia da semana
 <select name="day">
 	<option></option>
@@ -79,6 +82,17 @@ if ($result) {
 	<option value="6">Sábado</option>
 	<option value="7">Domingo</option>
 </select>
+
+<br />
+
+Atrasos
+<input type="text" name="delays" value="0" />
+
+<br />
+
+Prioridade
+<input type="text" name="priority" value="1" />
+
 
 <p>
 <input type="submit" value="Cadastrar" />
