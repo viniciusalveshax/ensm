@@ -63,5 +63,8 @@ function category_name($id) {
 	
 }
 
+function show_task_edit_form($id){
+	echo "<a href=\"edit_task.php?id=" . $id . "\">Editar</a>"; 
+}
 
 ?>
