@@ -73,4 +73,23 @@ function show_task_edit_link($id){
 	echo "<a href=\"edit_task.php?id=" . $id . "\">Edição completa</a>"; 
 }
 
+
+function show_task_delay_link($id){
+	echo "<a href=\"delay_task.php?id=" . $id . "\">Adiar</a>"; 
+}
+
+
+function day2name($day_number){
+
+	$map = array(1 => "Segunda", 2 => "Terça", 3 => "Quarta", 4 => "Quinta", 5 => "Sexta", 6 => "Sábado", 7 => "Domingo");
+	
+	if (array_key_exists($day_number, $map))
+		$day_name = $map[$day_number];
+	else
+		$day_name = "";
+
+	return $day_name;
+
+}
+
 ?>
