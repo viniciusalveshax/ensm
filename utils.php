@@ -63,8 +63,14 @@ function category_name($id) {
 	
 }
 
-function show_task_edit_form($id){
-	echo "<a href=\"edit_task.php?id=" . $id . "\">Editar</a>"; 
+
+function show_task_quick_edit_link($id){
+	echo "<a href=\"quick_edit_task.php?id=" . $id . "\">Ed. ráp.</a>"; 
+}
+
+
+function show_task_edit_link($id){
+	echo "<a href=\"edit_task.php?id=" . $id . "\">Edição completa</a>"; 
 }
 
 ?>

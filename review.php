@@ -28,7 +28,9 @@ if ($result) {
 		while ($line = mysqli_fetch_assoc($result)) {
 			echo "<li>" . $line['description'];
 			echo " Categoria: " . category_name($line['category_id']) . " ";
-			show_task_edit_form($line['id']);
+			show_task_quick_edit_link($line['id']);
+			echo " ";
+			show_task_edit_link($line['id']);
 			echo "</li>";
 			}
 
