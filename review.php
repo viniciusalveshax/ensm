@@ -12,6 +12,53 @@ require "utils.php";
 
 <?php
 
+$sql = "SELECT objective_id FROM tasks WHERE objective_id IS NOT NULL AND day IS NOT NULL GROUP BY objective_id";
+
+$result = query_or_die_trying($sql);
+
+$count = mysqli_num_rows($result);
+
+if ($count == 0)
+	echo "<p>Nenhum objetivo contemplado</p>";
+	
+else
+	{
+	$objectives = array();
+	while ($line = mysqli_fetch_assoc($result)) {
+			$tmp_objective_id = $line['objective_id'];
+			$objectives[$tmp_objective_id] = true;
+		}
+	
+	
+//	print_r($objectives);
+	
+	$sql = "SELECT id, description FROM objectives";
+
+	$result = query_or_die_trying($sql);
+	
+	echo "<p>Objetivos não contemplados</p>";
+	
+	echo "<ul>";
+	
+	while ($line = mysqli_fetch_assoc($result)) {
+			$tmp_id = $line['id'];
+			$description = $line['description'];
+			if (!array_key_exists($tmp_id, $objectives))
+				echo "<li>Objetivo $description não contemplado </li>";
+		}
+	
+	echo "</ul>";
+	
+	}
+
+?>
+
+</ul>
+
+<ul>
+
+<?php
+
 $sql = "SELECT * from tasks ORDER BY category_id";
 
 $result = query_or_die_trying($sql);
@@ -22,6 +69,8 @@ if ($result) {
 	echo "Qtdade de resultados: " . $count;
 
 	if ($count >= 0) {
+
+		echo "<p>Tarefas</p>";
 
 		echo "<ul>";
 

@@ -22,8 +22,7 @@ $task = mysqli_fetch_assoc($result);
 
 <form action="quick_edit_task2.php" method="post">
 
-<p>ID</p>
-<input type="text" value="<?php echo $task['id'] ?>" name="id" />
+<input type="hidden" value="<?php echo $task['id'] ?>" name="id" />
 
 <p>Descrição</p>
 <input type="text" value="<?php echo $task['description'] ?>" name="description" />

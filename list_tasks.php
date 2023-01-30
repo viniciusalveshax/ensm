@@ -20,7 +20,9 @@ $result = query_or_die_trying($sql);
 if ($result) {
 
 	while ($line = mysqli_fetch_assoc($result)) {
-		echo "<li>" . $line['description'] . ", Categoria: " . category_name($line['category_id']) . ", Data: " . $line['day'] . "</li>";
+		echo "<li>" . $line['description'] . ", Categoria: " . category_name($line['category_id']) . ", Data: " . $line['day'];
+		show_task_edit_link($line['id']);
+		echo "</li>";
 	}
 
 	}

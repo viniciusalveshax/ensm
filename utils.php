@@ -78,10 +78,34 @@ function show_task_delay_link($id){
 	echo "<a href=\"delay_task.php?id=" . $id . "\">Adiar</a>"; 
 }
 
+function show_selected_option($selected_id, $options) {
+	$tags = "";
+	if ($selected_id == "")
+		$option = "selected";
+	else
+		$option = "";
+	$tags = "<option $option></option>";
+	foreach($options as $key => $value) {
+		if ($key == $selected_id)
+			$option = "selected";
+		else
+			$option = "";
+		$tags = $tags . "<option value=\"$key\" $option>$value</option>";
+	}
+	echo $tags;
+}
+
+function array_day_names() {
+
+	$day_names = array(1 => "Segunda", 2 => "Terça", 3 => "Quarta", 4 => "Quinta", 5 => "Sexta", 6 => "Sábado", 7 => "Domingo");
+	
+	return $day_names;
+
+}
 
 function day2name($day_number){
 
-	$map = array(1 => "Segunda", 2 => "Terça", 3 => "Quarta", 4 => "Quinta", 5 => "Sexta", 6 => "Sábado", 7 => "Domingo");
+	$map = array_day_names();
 	
 	if (array_key_exists($day_number, $map))
 		$day_name = $map[$day_number];
@@ -90,6 +114,16 @@ function day2name($day_number){
 
 	return $day_name;
 
+}
+
+function nullify($value) {
+	
+	if ($value == "")
+		$ret_val = "NULL";
+	else
+		$ret_val = $value;
+		
+	return $ret_val;
 }
 
 ?>
