@@ -22,7 +22,9 @@
 
 <h4>Outras</h4>
 <ul class="footer">
-	<li><a href="review.php">Revisão</a></li>
+	<li><a href="review_daily.php">Revisão diária</a></li>
+	<li><a href="review.php">Revisão semanal</a></li>
+	
 </ul>
 
 </body>
