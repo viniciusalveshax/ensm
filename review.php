@@ -32,18 +32,21 @@ else
 	
 //	print_r($objectives);
 	
-	$sql = "SELECT id, description FROM objectives";
+	$sql = "SELECT id, description, month_begin FROM objectives";
 
 	$result = query_or_die_trying($sql);
 	
 	echo "<p>Objetivos não contemplados</p>";
 	
 	echo "<ul>";
+
+	echo date('n');
 	
 	while ($line = mysqli_fetch_assoc($result)) {
 			$tmp_id = $line['id'];
 			$description = $line['description'];
-			if (!array_key_exists($tmp_id, $objectives))
+			$month_begin = $line['month_begin'];
+			if (!array_key_exists($tmp_id, $objectives) && (date('n')>=$month_begin))
 				echo "<li>Objetivo $description não contemplado </li>";
 		}
 	
