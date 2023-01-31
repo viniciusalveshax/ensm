@@ -93,7 +93,7 @@ if ($result) {
 ?>
 
 <br />Data limite
-<input type="text" name="due_date" />
+<input type="text" name="due_date" value="<?php echo $task['due_date']; ?>"/>
 
 <br />Dia da semana
 <select name="day">

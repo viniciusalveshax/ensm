@@ -12,14 +12,15 @@ require "utils.php";
 
 <?php
 
-$sql = "SELECT * from tasks WHERE day > 0 ORDER BY day";
 
-$result = query_or_die_trying($sql);
 
 $today_day = date('w'); // day of week
 
-
 echo "Dia da semana: $today_day <br />";
+
+$sql = "SELECT * from tasks WHERE day >= $today_day ORDER BY day";
+
+$result = query_or_die_trying($sql);
 
 if ($result) {
 
@@ -27,11 +28,21 @@ if ($result) {
 	echo "Qtdade de resultados: " . $count;
 
 	if ($count >= 0) {
+	
+		$tasks = array();
 
 		echo "<ul>";
 
 		while ($line = mysqli_fetch_assoc($result)) {
-			echo "<li>" . $line['description'];
+			if ($line['day'] == $today_day)
+				$css_class = "today";
+			else
+				if ($line['day'] == ($today_day+1))
+					$css_class = "tomorrow";
+				else
+					$css_class = "";
+			echo "<li class=\"$css_class\">";		
+			echo $line['description'];
 			echo " Categoria: " . category_name($line['category_id']) . " ";
 			show_task_quick_edit_link($line['id']);
 			echo " - ";
@@ -48,6 +59,7 @@ if ($result) {
 	}
 
 else {
+	echo "SQL: $sql";
 	echo "Deveria ter morrido";
 	}
 

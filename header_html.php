@@ -9,6 +9,15 @@ if (!session_id() )
 <html>
 
 <style>
+
+.today {
+	color: red;
+}
+
+.tomorrow {
+	color: orange;
+}
+
 h3 {
 	color: red;
 }

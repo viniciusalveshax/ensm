@@ -26,7 +26,7 @@ echo $id;
 echo $description;
 echo $day;
 
-$sql = "UPDATE tasks SET description=\"$description\", day=$day, category_id=$category_id, delays=$delays, priority=$priority, objective_id=$objective_id, due_date=$due_date WHERE id = $id";
+$sql = "UPDATE tasks SET description=\"$description\", day=$day, category_id=$category_id, delays=$delays, priority=$priority, objective_id=$objective_id, due_date='$due_date' WHERE id = $id";
 
 $result = query_or_die_trying($sql);
 

@@ -40,7 +40,7 @@ else
 	
 	echo "<ul>";
 
-	echo date('n');
+//	echo date('n');
 	
 	while ($line = mysqli_fetch_assoc($result)) {
 			$tmp_id = $line['id'];

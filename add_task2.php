@@ -7,19 +7,18 @@ require "utils.php";
 
 $obj_description = $_POST["description"];
 $category_id = $_POST["category_id"];
-$day = $_POST["day"];
 $delays = $_POST["delays"];
 $priority = $_POST["priority"];
+$objective_id = nullify($_POST["objective_id"]);
+$day = nullify($_POST["day"]);
+$due_date = nullify($_POST["due_date"]);
 
 
 echo $obj_description;
 echo $category_id;
 echo $day;
 
-if ($day && ($day!="") )
-	$sql = "INSERT INTO tasks (description, category_id, day, delays, priority) VALUES ('" . $obj_description . "','" . $category_id . "', '" . $day . "', '" . $delays . "', '" . $priority . "')"; 
-else
-	$sql = "INSERT INTO tasks (description, category_id, delays, priority) VALUES ('" . $obj_description . "','" . $category_id . "', '" . $delays . "', '" . $priority . "')";
+$sql = "INSERT INTO tasks (description, category_id, delays, priority, due_date, objective_id, day) VALUES ('$obj_description',$category_id, $delays,$priority, $due_date, $objective_id, $day)";
 
 echo $sql;
 
