@@ -18,7 +18,7 @@ $today_day = date('w'); // day of week
 
 echo "Dia da semana: $today_day <br />";
 
-$sql = "SELECT * from tasks WHERE day >= $today_day ORDER BY day";
+$sql = "SELECT * from tasks WHERE (day IS NOT NULL OR due_date IS NOT NULL) AND done=FALSE ORDER BY day, due_date";
 
 $result = query_or_die_trying($sql);
 
@@ -39,27 +39,31 @@ if ($result) {
 		echo "<ul>";
 
 		foreach($tasks as $line) {
-			if ($line['day'] == $today_day)
-				$css_class = "today";
-			else
-				if ($line['day'] == ($today_day+1))
-					$css_class = "tomorrow";
+			if ($line['day']) {
+				if ($line['day'] < $today_day)
+					$css_class = "emphasis_high";
 				else
-					$css_class = "";
-			echo "<li class=\"$css_class\">";		
-			echo $line['description'];
-			echo " Categoria: " . category_name($line['category_id']) . " ";
-			show_task_quick_edit_link($line['id']);
-			echo " - ";
-			show_task_edit_link($line['id']);
-			echo " - ";
-			show_task_delay_link($line['id']);
-			echo "</li>";
+					if ($line['day'] == $today_day)
+						$css_class = "emphasis_medium";
+					else	if ($line['day'] == ($today_day+1))
+							$css_class = "emphasis_low";
+						else
+							$css_class = "";
+				echo "<li class=\"$css_class\">";		
+				echo $line['description'];
+				echo " Categoria: " . category_name($line['category_id']) . " ";
+				show_task_quick_edit_link($line['id']);
+				echo " - ";
+				show_task_edit_link($line['id']);
+				echo " - ";
+				show_task_delay_link($line['id']);
+				echo "</li>";
+				}
 			}
 
 		echo "</ul>";
 		
-		echo "<p>Tarefas com date limite próximas</p>";
+		echo "<p>Tarefas com date limite (</p>";
 		
 		echo "<ul>";
 		foreach($tasks as $line) {
@@ -70,8 +74,19 @@ if ($result) {
 				//var_dump($tmp_due_date);
 				$diff_date = date_diff($today, $tmp_due_date);
 				//var_dump($diff_date); //->format('%R%a dias');
-				echo "<li>" . $line['description'];
-				echo $diff_date->format('%R%a');
+				$left_days = $diff_date->format('%a');
+				
+				$css_class="";
+				if ($left_days < 0)
+					$css_class = "emphasis_high";
+				else
+					if ($left_days == 0 || $left_days == 1)
+						$css_class = "emphasis_medium";
+					else
+						if ($left_days <= 7)
+							$css_class = "emphasis_low";
+						
+				echo "<li class=$css_class>" . $line['description'];
 				echo "</li>";
 				}
 			}

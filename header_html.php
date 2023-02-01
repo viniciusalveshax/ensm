@@ -10,12 +10,16 @@ if (!session_id() )
 
 <style>
 
-.today {
+.emphasis_high {
 	color: red;
 }
 
-.tomorrow {
+.emphasis_medium {
 	color: orange;
+}
+
+.emphasis_low {
+	color: blue;
 }
 
 h3 {
