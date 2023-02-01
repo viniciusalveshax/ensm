@@ -4,7 +4,6 @@ session_start();
 
 require "utils.php";
 
-
 $obj_description = $_POST["description"];
 $category_id = $_POST["category_id"];
 $delays = $_POST["delays"];
@@ -17,7 +16,7 @@ echo $obj_description;
 echo $category_id;
 echo $day;
 
-$sql = "INSERT INTO tasks (description, category_id, delays, priority, due_date, objective_id, day) VALUES ('$obj_description',$category_id, $delays,$priority, '$due_date', $objective_id, $day)";
+$sql = "INSERT INTO tasks (description, category_id, delays, priority, due_date, objective_id, day) VALUES ('$obj_description',$category_id, $delays,$priority, $due_date, $objective_id, $day)";
 
 echo $sql;
 

@@ -127,7 +127,7 @@ function nullify($value) {
 	if ($value == "")
 		$ret_val = "NULL";
 	else
-		$ret_val = $value;
+		$ret_val = "\"$value\"";
 		
 	return $ret_val;
 }
