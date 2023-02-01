@@ -78,6 +78,12 @@ function show_task_delay_link($id){
 	echo "<a href=\"delay_task.php?id=" . $id . "\">Adiar</a>"; 
 }
 
+
+function show_task_done_link($id){
+	echo "<a href=\"done_task.php?id=" . $id . "\">Concluir</a>"; 
+}
+
+
 function show_selected_option($selected_id, $options) {
 	$tags = "";
 	if ($selected_id == "")

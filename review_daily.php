@@ -57,6 +57,8 @@ if ($result) {
 				show_task_edit_link($line['id']);
 				echo " - ";
 				show_task_delay_link($line['id']);
+				echo " - ";
+				show_task_done_link($line['id']);
 				echo "</li>";
 				}
 			}
