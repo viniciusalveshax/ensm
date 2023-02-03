@@ -57,7 +57,7 @@ if ($result) {
 
 	echo "</select>";
 
-	print_r($categories);
+	//print_r($categories);
 
 }
 
