@@ -14,7 +14,7 @@ $task = mysqli_fetch_assoc($result);
 $delay_count = $task['delays'];
 $delay_count = $delay_count + 1;
 
-$sql = "UPDATE tasks SET delays = \"$delay_count\" WHERE id = $id";
+$sql = "UPDATE tasks SET delays = \"$delay_count\", day=NULL WHERE id = $id";
 
 $result = query_or_die_trying($sql);
 
