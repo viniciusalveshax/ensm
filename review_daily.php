@@ -36,7 +36,7 @@ if ($result) {
 		}
 
 		echo "<p>Tarefas da semana</p>";
-		echo "<ul>";
+		echo "<table><tr><th>Descrição</th><th>Categoria</th><th>Links</th></tr>";
 
 		foreach($tasks as $line) {
 			if ($line['day']) {
@@ -49,9 +49,10 @@ if ($result) {
 							$css_class = "emphasis_low";
 						else
 							$css_class = "";
-				echo "<li class=\"$css_class\">";		
-				echo $line['description'];
-				echo " Categoria: " . category_name($line['category_id']) . " ";
+				echo "<tr class=\"$css_class\">";		
+				echo "<td>" . $line['description'] . "</td>";
+				echo "<td>" . category_name($line['category_id']) . "</td>";
+				echo "<td>";
 				show_task_quick_edit_link($line['id']);
 				echo " - ";
 				show_task_edit_link($line['id']);
@@ -59,11 +60,12 @@ if ($result) {
 				show_task_delay_link($line['id']);
 				echo " - ";
 				show_task_done_link($line['id']);
-				echo "</li>";
+				echo "</td>";
+				echo "</tr>";
 				}
 			}
 
-		echo "</ul>";
+		echo "</table>";
 		
 		echo "<p>Tarefas com date limite (</p>";
 		
@@ -87,9 +89,12 @@ if ($result) {
 					else
 						if ($left_days <= 7)
 							$css_class = "emphasis_low";
-						
-				echo "<li class=$css_class>" . $line['description'];
-				echo "</li>";
+				
+				if ($css_class != "") {		
+					echo "<li class=$css_class>";
+					echo $line['description'] . ' - ' . $line['due_date'];
+					echo "</li>";
+					}
 				}
 			}
 			
