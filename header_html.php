@@ -10,6 +10,10 @@ if (!session_id() )
 
 <style>
 
+table td {
+	border: 1px solid black;
+}
+
 .emphasis_high {
 	color: red;
 }
