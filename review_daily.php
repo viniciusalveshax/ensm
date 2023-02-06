@@ -49,6 +49,8 @@ if ($result) {
 							$css_class = "emphasis_low";
 						else
 							$css_class = "";
+				if ($today_day == 0)
+					$css_class = "emphasis_high";
 				echo "<tr class=\"$css_class\">";		
 				echo "<td>" . $line['description'] . "</td>";
 				echo "<td>" . category_name($line['category_id']) . "</td>";
