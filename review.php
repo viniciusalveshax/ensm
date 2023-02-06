@@ -12,7 +12,7 @@ require "utils.php";
 
 <?php
 
-$sql = "SELECT objective_id FROM tasks WHERE objective_id IS NOT NULL AND day IS NOT NULL GROUP BY objective_id, priority, delays";
+$sql = "SELECT objective_id FROM tasks WHERE objective_id IS NOT NULL AND day IS NOT NULL GROUP BY objective_id";
 
 $result = query_or_die_trying($sql);
 
@@ -62,7 +62,7 @@ else
 
 <?php
 
-$sql = "SELECT * from tasks ORDER BY category_id";
+$sql = "SELECT * from tasks ORDER BY category_id, priority, delays DESC";
 
 $result = query_or_die_trying($sql);
 
@@ -75,20 +75,27 @@ if ($result) {
 
 		echo "<p>Tarefas</p>";
 
-		echo "<ul>";
+		echo "<p>Tarefas possíveis</p>";
+		echo "<table><tr><th>Descrição</th><th>Data limite</th><th>Qtdade adiament.</th><th>Categoria</th><th>Links</th></tr>";
 
+		
 		while ($line = mysqli_fetch_assoc($result)) {
-			echo "<li>" . $line['description'];
-			echo " Categoria: " . category_name($line['category_id']) . " ";
+			if ($line["day"])
+				continue;
+			echo "<tr><td>" . $line['description'] . "</td>";
+			echo "<td>" . $line["due_date"] . "</td>";
+			echo "<td>" . $line["delays"] . "</td>";
+			echo "<td>" . category_name($line['category_id']) . "</td>";
+			echo "<td>";
 			show_task_quick_edit_link($line['id']);
 			echo " - ";
 			show_task_edit_link($line['id']);
 			echo " - ";
 			show_task_delay_link($line['id']);
-			echo "</li>";
+			echo "</td></tr>";
 			}
 
-		echo "</ul>";
+		echo "</table>";
 	
 		}
 
