@@ -12,7 +12,7 @@ require "utils.php";
 
 <?php
 
-$sql = "SELECT objective_id FROM tasks WHERE objective_id IS NOT NULL AND day IS NOT NULL GROUP BY objective_id";
+$sql = "SELECT objective_id FROM tasks WHERE objective_id IS NOT NULL AND day IS NOT NULL GROUP BY objective_id, priority, delays";
 
 $result = query_or_die_trying($sql);
 
