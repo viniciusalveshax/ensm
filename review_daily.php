@@ -52,7 +52,7 @@ if ($result) {
 				if ($today_day == 0)
 					$css_class = "emphasis_high";
 				echo "<tr class=\"$css_class\">";		
-				echo "<td>" . $line['description'] . "</td>";
+				echo "<td>" . $line['description'] . "(" . $line['day'] . ")</td>";
 				echo "<td>" . category_name($line['category_id']) . "</td>";
 				echo "<td>";
 				show_task_quick_edit_link($line['id']);
@@ -69,7 +69,7 @@ if ($result) {
 
 		echo "</table>";
 		
-		echo "<p>Tarefas com date limite (</p>";
+		echo "<p>Tarefas com date limite</p>";
 		
 		echo "<ul>";
 		foreach($tasks as $line) {
