@@ -11,12 +11,19 @@ $priority = $_POST["priority"];
 $objective_id = nullify($_POST["objective_id"]);
 $day = nullify($_POST["day"]);
 $due_date = nullify($_POST["due_date"]);
+$followup = $_POST['followup'];
+$followup_date = nullify($_POST['followup_date']);
+
+if ($followup)
+	$done = 1;
+else
+	$done = 0;
 
 echo $obj_description;
 echo $category_id;
 echo $day;
 
-$sql = "INSERT INTO tasks (description, category_id, delays, priority, due_date, objective_id, day) VALUES ('$obj_description',$category_id, $delays,$priority, $due_date, $objective_id, $day)";
+$sql = "INSERT INTO tasks (description, category_id, delays, priority, due_date, objective_id, day, followup, followup_date, done) VALUES ('$obj_description',$category_id, $delays,$priority, $due_date, $objective_id, $day, $followup, $followup_date, $done)";
 
 echo $sql;
 

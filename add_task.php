@@ -93,6 +93,17 @@ Atrasos
 Prioridade
 <input type="text" name="priority" value="1" />
 
+<br />
+
+Acompanhar
+<input type="text" name="followup" value="0" />
+
+<br />
+
+Data de acompanhamento
+<input type="text" name="followup_date" />
+
+<br />
 
 <p>
 <input type="submit" value="Cadastrar" />
