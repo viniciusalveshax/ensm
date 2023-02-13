@@ -62,7 +62,7 @@ else
 
 <?php
 
-$sql = "SELECT * from tasks ORDER BY category_id, priority, delays DESC";
+$sql = "SELECT * from tasks WHERE done=false ORDER BY category_id, priority, delays DESC";
 
 $result = query_or_die_trying($sql);
 

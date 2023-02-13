@@ -83,6 +83,10 @@ function show_task_done_link($id){
 	echo "<a href=\"done_task.php?id=" . $id . "\">Concluir</a>"; 
 }
 
+function show_task_followup_link($id){
+	echo "<a href=\"followup_task1.php?id=" . $id . "\">Acompanhar</a>"; 
+}
+
 
 function show_selected_option($selected_id, $options) {
 	$tags = "";
