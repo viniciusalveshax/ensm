@@ -24,6 +24,7 @@
 <ul class="footer">
 	<li><a href="review_daily.php">Revisão diária</a></li>
 	<li><a href="review.php">Revisão semanal</a></li>
+	<li><a href="review_past.php">Semanas anteriores</a></li>
 	
 </ul>
 
