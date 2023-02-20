@@ -85,11 +85,13 @@ if ($result) {
 				if ($line['followup_date']){
 					$suffix = " - Acompanhar em: " . $line['followup_date'];
 					$tmp_due_date = date_create($line['followup_date']);	
+					//show_task_followup_link($line['id']);
 					}
 				else
 					{
 					$tmp_due_date = date_create($line['due_date']);
 					$suffix = " - Fazer até: " . $line['due_date'];
+					//show_task_done_link($line['id']);
 					}
 				
 				
@@ -113,6 +115,11 @@ if ($result) {
 				if ($css_class != "") {		
 					echo "<li class=$css_class>";
 					echo $line['description'] . $suffix;
+					if ($line['followup_date'])
+						show_task_done_link($line['id']);
+					else
+						show_task_followup_link($line['id']);
+
 					echo "</li>";
 					}
 				}
