@@ -122,6 +122,8 @@ if ($result) {
 						show_task_followup_link($line['id']);
 					echo ' - ';
 					show_task_edit_link($line['id']);
+					echo ' - ';
+					show_task_hide_link($line['id']);
 					echo "</td></tr>";
 					}
 				}
