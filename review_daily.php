@@ -18,7 +18,7 @@ $today_day = date('w'); // day of week
 
 echo "Dia da semana: $today_day <br />";
 
-$sql = "SELECT * from tasks WHERE (day IS NOT NULL OR due_date IS NOT NULL OR followup_date IS NOT NULL) AND (done=FALSE OR followup=TRUE) AND hide=FALSE ORDER BY day,due_date,followup_date";
+$sql = "SELECT * from tasks WHERE (day IS NOT NULL OR due_date IS NOT NULL OR followup_date IS NOT NULL) AND (done=FALSE OR followup=TRUE) AND hide=FALSE ORDER BY day,due_date,followup_date,delays DESC";
 
 $result = query_or_die_trying($sql);
 
@@ -36,7 +36,7 @@ if ($result) {
 		}
 
 		echo "<p>Tarefas da semana</p>";
-		echo "<table><tr><th>Descrição</th><th>Data limite</th><th>Categoria</th><th>Links</th></tr>";
+		echo "<table><tr><th>Descrição</th><th>Data limite/Adiamentos</th><th>Categoria</th><th>Links</th></tr>";
 
 		foreach($tasks as $line) {
 			if($line['done'] == 1)
@@ -55,7 +55,7 @@ if ($result) {
 					$css_class = "emphasis_high";
 				echo "<tr class=\"$css_class\">";		
 				echo "<td>" . $line['description'] . "(" . day2name($line['day']) . ")</td>";
-				echo "<td>" . $line['due_date'] . "</td>";
+				echo "<td>" . $line['due_date'] . "/" . $line['delays'] . "</td>";
 				echo "<td>" . category_name($line['category_id']) . "</td>";
 				echo "<td>";
 				show_task_quick_edit_link($line['id']);
