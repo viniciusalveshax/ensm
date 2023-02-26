@@ -18,7 +18,7 @@ $today_day = date('w'); // day of week
 
 echo "Dia da semana: $today_day <br />";
 
-$sql = "SELECT * from tasks WHERE (day IS NOT NULL OR due_date IS NOT NULL OR followup_date IS NOT NULL) AND (done=FALSE OR followup=TRUE) ORDER BY day,due_date,followup_date";
+$sql = "SELECT * from tasks WHERE (day IS NOT NULL OR due_date IS NOT NULL OR followup_date IS NOT NULL) AND (done=FALSE OR followup=TRUE) AND hide=FALSE ORDER BY day,due_date,followup_date";
 
 $result = query_or_die_trying($sql);
 
