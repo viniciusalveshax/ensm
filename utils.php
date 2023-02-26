@@ -88,6 +88,11 @@ function show_task_followup_link($id){
 }
 
 
+function show_task_hide_link($id){
+	echo "<a href=\"hide_task.php?id=" . $id . "\">Esconder</a>"; 
+}
+
+
 function show_selected_option($selected_id, $options) {
 	$tags = "";
 	if ($selected_id == "")
