@@ -36,7 +36,7 @@ if ($result) {
 		}
 
 		echo "<p>Tarefas da semana</p>";
-		echo "<table><tr><th>Descrição</th><th>Categoria</th><th>Links</th></tr>";
+		echo "<table><tr><th>Descrição</th><th>Data limite</th><th>Categoria</th><th>Links</th></tr>";
 
 		foreach($tasks as $line) {
 			if($line['done'] == 1)
@@ -55,6 +55,7 @@ if ($result) {
 					$css_class = "emphasis_high";
 				echo "<tr class=\"$css_class\">";		
 				echo "<td>" . $line['description'] . "(" . day2name($line['day']) . ")</td>";
+				echo "<td>" . $line['due_date'] . "</td>";
 				echo "<td>" . category_name($line['category_id']) . "</td>";
 				echo "<td>";
 				show_task_quick_edit_link($line['id']);
