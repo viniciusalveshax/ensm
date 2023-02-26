@@ -73,10 +73,13 @@ if ($result) {
 
 		echo "</table>";
 		
-		echo "<p>Tarefas com data limite</p>";
+		echo "<p>Tarefas com data limite não agendadas</p>";
 		
 		echo "<table>";
 		foreach($tasks as $line) {
+			// Se tarefa já está agendada então não mostre na parte de tarefas com data limite
+			if ($line['day'])
+				continue;
 			if ($line['due_date'] || $line['followup_date']) {
 				$today = date_create(date());
 				//var_dump($today);
