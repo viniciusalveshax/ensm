@@ -75,7 +75,7 @@ if ($result) {
 		
 		echo "<p>Tarefas com data limite</p>";
 		
-		echo "<ul>";
+		echo "<table>";
 		foreach($tasks as $line) {
 			if ($line['due_date'] || $line['followup_date']) {
 				$today = date_create(date());
@@ -113,19 +113,21 @@ if ($result) {
 							$css_class = "emphasis_low";
 				
 				if ($css_class != "") {		
-					echo "<li class=$css_class>";
-					echo $line['description'] . $suffix;
+					echo "<tr><td class=$css_class>";
+					echo $line['description'] . $suffix . '</td>';
+					echo '<td>';
 					if ($line['followup_date'])
 						show_task_done_link($line['id']);
 					else
 						show_task_followup_link($line['id']);
-
-					echo "</li>";
+					echo ' - ';
+					show_task_edit_link($line['id']);
+					echo "</td></tr>";
 					}
 				}
 			}
 			
-		echo "</ul>";
+		echo "</table>";
 	
 		}
 
