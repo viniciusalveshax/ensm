@@ -9,7 +9,7 @@ $description = $_POST["description"];
 $followup_date = nullify($_POST["followup_date"]);
 $today = date("Y-m-d");
 
-$sql = "UPDATE tasks SET description=\"$description\",followup_date = $followup_date,done_date='$today',done=TRUE,followup=TRUE WHERE id = $id";
+$sql = "UPDATE tasks SET description=\"$description\",followup_date = $followup_date,done_date='$today',done=TRUE,followup=TRUE,day=NULL WHERE id = $id";
 
 //echo $sql;
 
