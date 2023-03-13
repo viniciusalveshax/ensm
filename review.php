@@ -62,7 +62,7 @@ else
 
 <?php
 
-$sql = "SELECT * from tasks WHERE (done=false AND hide=false) ORDER BY category_id, priority, delays DESC";
+$sql = "SELECT * from tasks WHERE (done=false OR followup=true) AND hide=false ORDER BY category_id, priority, delays DESC";
 
 $result = query_or_die_trying($sql);
 
@@ -76,14 +76,14 @@ if ($result) {
 		echo "<p>Tarefas</p>";
 
 		echo "<p>Tarefas possíveis</p>";
-		echo "<table><tr><th>Descrição</th><th>Data limite</th><th>Qtdade adiament.</th><th>Categoria</th><th>Links</th></tr>";
+		echo "<table><tr><th>Descrição</th><th>Data limite/Acomp.</th><th>Qtdade adiament.</th><th>Categoria</th><th>Links</th></tr>";
 
 		
 		while ($line = mysqli_fetch_assoc($result)) {
 			if ($line["day"])
 				continue;
 			echo "<tr><td>" . $line['description'] . "</td>";
-			echo "<td>" . $line["due_date"] . "</td>";
+			echo "<td>D." . $line["due_date"] . "/A." . $line["followup_date"] . "</td>";
 			echo "<td>" . $line["delays"] . "</td>";
 			echo "<td>" . category_name($line['category_id']) . "</td>";
 			echo "<td>";
