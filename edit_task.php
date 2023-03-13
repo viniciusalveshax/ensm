@@ -114,8 +114,13 @@ Atrasos
 <br />
 
 Prioridade
-<input type="text" name="priority" value="<?php echo $task['priority']; ?>" />
+<input type="text" name="priority" value="<?php echo $task['priority']; ?>" /><br />
 
+Acompanhar
+<input type="text" name="followup" value="<?php echo $task['followup']; ?>" /><br />
+
+Data para acompanhar
+<input type="text" name="followup_date" value="<?php echo $task['followup_date']; ?>" /><br />
 
 <p>
 <input type="submit" value="Cadastrar" />
