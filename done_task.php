@@ -21,6 +21,5 @@ if ($result) {
 else {
 	echo "Deveria ter morrido";
 	}
-	
 
 ?>
