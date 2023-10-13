@@ -75,8 +75,14 @@ function show_task_edit_link($id){
 
 
 function show_task_delay_link($id){
-	echo "<a href=\"delay_task.php?id=" . $id . "\">Adiar</a>"; 
+	echo "<a href=\"delay_task.php?id=" . $id . "\">Adia 7</a>"; 
 }
+
+
+function show_task_delay_one_day_link($id){
+	echo "<a href=\"delay_task_one_day.php?id=" . $id . "\">Adia 1</a>"; 
+}
+
 
 
 function show_task_done_link($id){
