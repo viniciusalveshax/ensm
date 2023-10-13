@@ -38,7 +38,9 @@ if ($result) {
 		echo "<p>Tarefas da semana</p>";
 		echo "<table><tr><th>Descrição</th><th>Data limite/Adiamentos</th><th>Categoria</th><th>Links</th></tr>";
 
+		$line_counter = 0;
 		foreach($tasks as $line) {
+			$line_counter++;
 			if($line['done'] == 1)
 				continue;
 			if ($line['day']) {
@@ -53,6 +55,8 @@ if ($result) {
 							$css_class = "";
 				if ($today_day == 0)
 					$css_class = "emphasis_high";
+				if ( ($line_counter % 2) == 0)
+					$css_class = $css_class . " odd";
 				echo "<tr class=\"$css_class\">";		
 				echo "<td>" . $line['description'] . "(" . day2name($line['day']) . ")</td>";
 				echo "<td>" . $line['due_date'] . "/" . $line['delays'] . "</td>";

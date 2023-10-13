@@ -33,6 +33,11 @@ h3 {
 ul.footer li { 
 	display: inline;
 }
+
+.odd {
+	background-color: rgb(240,240,240);
+}
+
 </style>
 
 
