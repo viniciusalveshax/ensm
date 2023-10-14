@@ -44,7 +44,7 @@ ul.footer li {
 <body>
 
 
-<h1>Eu não aguento mais: outro software de todolist</h1>
+<h1>Eu não suporto mais: outro software de todolist</h1>
 
 
 <?php
