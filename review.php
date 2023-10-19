@@ -71,6 +71,7 @@ if ($result) {
 	$count = mysqli_num_rows($result);
 	echo "Qtdade de resultados: " . $count;
 
+	$line_count = 0;
 	if ($count >= 0) {
 
 		echo "<p>Tarefas</p>";
@@ -78,11 +79,19 @@ if ($result) {
 		echo "<p>Tarefas possíveis</p>";
 		echo "<table><tr><th>Descrição</th><th>Data limite/Acomp.</th><th>Qtdade adiament.</th><th>Categoria</th><th>Links</th></tr>";
 
-		
+
 		while ($line = mysqli_fetch_assoc($result)) {
 			if ($line["day"])
 				continue;
-			echo "<tr><td>" . $line['description'] . "</td>";
+			$line_count++;
+			$css_class = ''; // Reseta classe css em cada linha
+			// Se já adiou muitas vezes então apresenta um maior destaque 
+			if ($line['delays'] >= 10)
+				$css_class = "emphasis_high";
+			// Deixa as linhas pares com uma cor diferente
+			if (($line_count % 2) == 0)
+				$css_class = $css_class . " odd";
+			echo "<tr class='$css_class'><td>" . $line['description'] . "</td>";
 			echo "<td>D." . $line["due_date"] . "/A." . $line["followup_date"] . "</td>";
 			echo "<td>" . $line["delays"] . "</td>";
 			echo "<td>" . category_name($line['category_id']) . "</td>";
