@@ -12,48 +12,47 @@ require "utils.php";
 
 <?php
 
-$sql = "SELECT objective_id FROM tasks WHERE objective_id IS NOT NULL AND day IS NOT NULL GROUP BY objective_id";
+$sql = "SELECT objective_id FROM tasks WHERE objective_id IS NOT NULL AND day IS NOT NULL AND done = 0 GROUP BY objective_id";
 
 $result = query_or_die_trying($sql);
 
 $count = mysqli_num_rows($result);
 
+$objectives = array();
+
+
 if ($count == 0)
 	echo "<p>Nenhum objetivo contemplado</p>";
 	
-else
-	{
-	$objectives = array();
-	while ($line = mysqli_fetch_assoc($result)) {
-			$tmp_objective_id = $line['objective_id'];
-			$objectives[$tmp_objective_id] = true;
-		}
-	
-	
-//	print_r($objectives);
-	
-	$sql = "SELECT id, description, month_begin FROM objectives";
-
-	$result = query_or_die_trying($sql);
-	
-	echo "<p>Objetivos não contemplados</p>";
-	
-	echo "<ul>";
-
-//	echo date('n');
-	
-	while ($line = mysqli_fetch_assoc($result)) {
-			$tmp_id = $line['id'];
-			$description = $line['description'];
-			$month_begin = $line['month_begin'];
-			if (!array_key_exists($tmp_id, $objectives) && (date('n')>=$month_begin))
-				echo "<li>Objetivo $description não contemplado </li>";
-		}
-	
-	echo "</ul>";
-	
+while ($line = mysqli_fetch_assoc($result)) {
+		$tmp_objective_id = $line['objective_id'];
+		$objectives[$tmp_objective_id] = true;
 	}
 
+
+//print_r($objectives);
+
+$sql = "SELECT id, description, month_begin FROM objectives WHERE hide = 0";
+
+$result = query_or_die_trying($sql);
+
+echo "<p>Objetivos não contemplados</p>";
+
+echo "<ul>";
+
+//	echo date('n');
+
+while ($line = mysqli_fetch_assoc($result)) {
+		//print_r($line);
+		$tmp_id = $line['id'];
+		$description = $line['description'];
+		$month_begin = $line['month_begin'];
+		if (!array_key_exists($tmp_id, $objectives) && (date('n')>=$month_begin))
+			echo "<li>Objetivo $description não contemplado </li>";
+	}
+
+echo "</ul>";
+	
 ?>
 
 </ul>
