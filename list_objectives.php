@@ -5,7 +5,7 @@ require "header_html.php";
 
 echo "<ul>";
 
-$sql = "SELECT * from objectives ORDER BY context_id"; 
+$sql = "SELECT * from objectives WHERE hide = 0 ORDER BY context_id"; 
 
 echo $sql;
 
