@@ -23,7 +23,10 @@ if ($result) {
 
 	$done_weekly_count = array();
 	$created_weekly_count = array();
+	$last_week_done_tasks = array();			
 	$hide_count = 0;
+
+	$current_week_number=date("W");
 
 	if ($count >= 0) {
 
@@ -52,7 +55,10 @@ if ($result) {
 				$done_date_object = new DateTime($done_date);
 				$done_week_number = $done_date_object->format('W');
 				$done_week_number = (int) $done_week_number;
-			
+	
+				if ($current_week_number == $done_week_number)
+					array_push($last_week_done_tasks, $line);
+		
 				// Se chave já existe então aumenta, senão inicializa
 				if (array_key_exists($done_week_number, $done_weekly_count))
 					$done_weekly_count[$done_week_number]++;
@@ -94,6 +100,13 @@ if ($result) {
 		
 		}
 	echo "</table>";
+
+	echo "<h3> Tarefas feitas na última semana (" . count($last_week_done_tasks) . "): </h3>";
+	echo "<ul>";
+	foreach($last_week_done_tasks as $task) {
+		echo "<li>" . $task['description'] . "</li>";
+		}
+	echo "</ul>";
 
 	echo "<h3>Total dif: $total_diff</h3>";
 
