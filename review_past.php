@@ -23,6 +23,7 @@ if ($result) {
 
 	$done_weekly_count = array();
 	$created_weekly_count = array();
+	$hide_count = 0;
 
 	if ($count >= 0) {
 
@@ -44,7 +45,6 @@ if ($result) {
 			else
 				$create_weekly_count[$create_week_number] = 1;
 			
-		
 			
 			// Verifica se tarefa já foi concluída		
 			if ($line['done_date']) {
@@ -60,6 +60,11 @@ if ($result) {
 					$done_weekly_count[$done_week_number] = 1;
 				}
 			
+			else
+				// Se a tarefa não foi concluída verifica se ela foi escondida
+				if ($line['hide'])
+					// Caso sim incrementa o contador de tarefas escondidas
+					$hide_count++;
 			
 
 		}
@@ -91,6 +96,8 @@ if ($result) {
 	echo "</table>";
 
 	echo "<h3>Total dif: $total_diff</h3>";
+
+	echo "<h3>Total (sem contar escondidas): " . ($total_diff - $hide_count) . "</h3>";
 
 	}
 
