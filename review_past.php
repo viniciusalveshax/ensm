@@ -104,7 +104,7 @@ if ($result) {
 	echo "<h3> Tarefas feitas na última semana (" . count($last_week_done_tasks) . "): </h3>";
 	echo "<ul>";
 	foreach($last_week_done_tasks as $task) {
-		echo "<li>" . $task['description'] . "</li>";
+		echo "<li>" . $task['description'] . "(" . category_name($task['category_id']) . ")</li>";
 		}
 	echo "</ul>";
 
