@@ -6,14 +6,8 @@ require "utils.php";
 
 
 $obj_description = $_POST["description"];
-$context_id = $_POST["context_id"];
 
-
-
-echo $obj_description;
-echo $context_id;
-
-$sql = "INSERT INTO objectives (description, context_id) VALUES ('" . $obj_description . "','" . $context_id . "')"; 
+$sql = "INSERT INTO objectives (description) VALUES ('" . $obj_description . "')"; 
 
 echo $sql;
 
