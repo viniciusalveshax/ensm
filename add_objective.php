@@ -4,14 +4,6 @@
 require "header_html.php";
 require "utils.php";
 
-$sql = "SELECT * FROM contexts"; 
-
-$result = query_or_die_trying($sql);
-
-echo "Chegou aqui";
-
-
-
 ?>
 
 <h2>Adicionar objetivo</h2>
@@ -21,29 +13,11 @@ echo "Chegou aqui";
 <p>Descrição</p>
 <input type="text" placeholder="Descreva o objetivo" name="description" />
 
-<p>Contexto</p>
-<select name="context_id">
-<?php
-
-if ($result) {
-
-	echo "Resultados...";
-	
-	$count = mysqli_num_rows($result);
-	
-	echo $count;
-
-	//$line = mysqli_fetch_assoc($result);
-
-	while ($line = mysqli_fetch_assoc($result)) {
-		echo "<option value=" . $line['id'] . ">" . $line['description'] . "</option>";
-		//echo "oi";
-	}
-
-	}
-
-
-?>
+<p>Importância</p>
+<select name="importance">
+	<option value="high">Alta</option>
+	<option value="medium">Média</option>
+	<option value="low">Baixa</option>
 </select>
 
 <p>
