@@ -8,7 +8,7 @@ $obj_description = $_POST["description"];
 $category_id = $_POST["category_id"];
 $delays = $_POST["delays"];
 $priority = $_POST["priority"];
-$objective_id = nullify($_POST["objective_id"]);
+$goal_id = nullify($_POST["goal_id"]);
 $day = nullify($_POST["day"]);
 $due_date = nullify($_POST["due_date"]);
 $followup = $_POST['followup'];
@@ -23,7 +23,7 @@ echo $obj_description;
 echo $category_id;
 echo $day;
 
-$sql = "INSERT INTO tasks (description, category_id, delays, priority, due_date, objective_id, day, followup, followup_date, done) VALUES ('$obj_description',$category_id, $delays,$priority, $due_date, $objective_id, $day, $followup, $followup_date, $done)";
+$sql = "INSERT INTO tasks (description, category_id, delays, priority, due_date, goal_id, day, followup, followup_date, done) VALUES ('$obj_description',$category_id, $delays,$priority, $due_date, $goal_id, $day, $followup, $followup_date, $done)";
 
 echo $sql;
 

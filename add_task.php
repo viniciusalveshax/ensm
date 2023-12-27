@@ -43,7 +43,7 @@ if ($result) {
 
 echo "</select>";
 
-$sql = "SELECT * FROM objectives"; 
+$sql = "SELECT * FROM goals"; 
 
 $result = query_or_die_trying($sql);
 
@@ -51,11 +51,11 @@ if ($result) {
 
 	$count = mysqli_num_rows($result);
 	
-	echo "<br />Qtdade de objetivos: " . $count;
+	echo "<br />Qtdade de metas: " . $count;
 
 	//$line = mysqli_fetch_assoc($result);
 	
-	echo "<select name=\"objective_id\"> <option></option>";
+	echo "<select name=\"goal_id\"> <option></option>";
 
 	while ($line = mysqli_fetch_assoc($result)) {
 		echo "<option value=" . $line['id'] . ">" . $line['description'] . "</option>";
