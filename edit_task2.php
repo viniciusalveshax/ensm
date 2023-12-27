@@ -6,11 +6,10 @@ require "utils.php";
 
 $id = $_POST["id"];
 $description = $_POST["description"];
-$category_id = $_POST["category_id"];
+$goal_id = $_POST["goal_id"];
 $delays = $_POST["delays"];
 $priority = $_POST["priority"];
 $followup = $_POST["followup"];
-$objective_id = nullify($_POST['objective_id']);
 $due_date = nullify($_POST['due_date']);
 $day = nullify($_POST['day']);
 $followup_date = nullify($_POST['followup_date']);
@@ -21,7 +20,7 @@ echo $description;
 echo $day;
 echo "<br />Prioridade:$priority;";
 
-$sql = "UPDATE tasks SET description=\"$description\", day=$day, category_id=$category_id, delays=$delays, priority=$priority, objective_id=$objective_id, due_date=$due_date,followup=$followup,followup_date=$followup_date, done=FALSE WHERE id = $id";
+$sql = "UPDATE tasks SET description=\"$description\", day=$day, goal_id=$goal_id, delays=$delays, priority=$priority, due_date=$due_date,followup=$followup,followup_date=$followup_date, done=FALSE WHERE id = $id";
 
 $result = query_or_die_trying($sql);
 

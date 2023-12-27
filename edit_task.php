@@ -29,10 +29,10 @@ echo "Chegou aqui";
 <p>Descrição</p>
 <input type="text" placeholder="Descreva a tarefa" name="description" value="<?php echo $task['description']; ?>" />
 
-<p>Categoria</p>
+<p>Meta</p>
 <?php
 
-$sql = "SELECT * FROM categories"; 
+$sql = "SELECT * FROM goals"; 
 
 $result = query_or_die_trying($sql);
 
@@ -42,25 +42,24 @@ if ($result) {
 	
 	$count = mysqli_num_rows($result);
 	
-	echo "Qtdade de categorias: $count <br />";
+	echo "Qtdade de metas: $count <br />";
 
-	echo "Categoria <select name=\"category_id\">";
+	echo "Meta <select name=\"goal_id\">";
 
-	$categories = array();
+	$goals = array();
 	while ($line = mysqli_fetch_assoc($result)) {
 		$tmp_id = $line['id'];
 		$tmp_description = $line['description'];
-		$categories[$tmp_id] = $tmp_description;
+		$goals[$tmp_id] = $tmp_description;
 	}
 
-	show_selected_option($task['category_id'], $categories);
+	show_selected_option($task['goal_id'], $goals);
 
 	echo "</select>";
 
-	//print_r($categories);
-
 }
 
+/*
 $sql = "SELECT * FROM objectives"; 
 
 $result = query_or_die_trying($sql);
@@ -88,7 +87,7 @@ if ($result) {
 	
 	echo "</select>";
 
-}
+}*/
 
 ?>
 
