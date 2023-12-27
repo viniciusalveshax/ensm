@@ -12,7 +12,9 @@ require "utils.php";
 
 <?php
 
-$sql = "SELECT objective_id FROM tasks WHERE objective_id IS NOT NULL AND day IS NOT NULL AND done = 0 GROUP BY objective_id";
+$sql = "select id, description from objectives where objectives.id not in (select objective_id from goals) and hide=0 and importance='high'";
+
+//$sql = "SELECT objective_id FROM tasks WHERE objective_id IS NOT NULL AND day IS NOT NULL AND done = 0 GROUP BY objective_id";
 
 $result = query_or_die_trying($sql);
 
@@ -20,15 +22,16 @@ $count = mysqli_num_rows($result);
 
 $objectives = array();
 
-
 if ($count == 0)
-	echo "<p>Nenhum objetivo contemplado</p>";
-	
-while ($line = mysqli_fetch_assoc($result)) {
-		$tmp_objective_id = $line['objective_id'];
-		$objectives[$tmp_objective_id] = true;
-	}
-
+	echo "<p>Objetivos importantes contemplados com metas: ok</p>";
+else
+	echo '<h3>Objetivos importantes sem metas</h3>';	
+	echo '<ul>';
+	while ($line = mysqli_fetch_assoc($result)) {
+			$objective_description = $line["description"];
+			echo "<li>$objective_description</li>";
+		}
+	echo '</ul>';
 
 //print_r($objectives);
 
