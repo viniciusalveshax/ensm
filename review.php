@@ -12,6 +12,7 @@ require "utils.php";
 
 <?php
 
+// Seleciona os objetivos sem metas associadas
 $sql = "select id, description from objectives where objectives.id not in (select objective_id from goals) and hide=0 and importance='high'";
 
 //$sql = "SELECT objective_id FROM tasks WHERE objective_id IS NOT NULL AND day IS NOT NULL AND done = 0 GROUP BY objective_id";
@@ -24,7 +25,7 @@ $objectives = array();
 
 if ($count == 0)
 	echo "<p>Objetivos importantes contemplados com metas: ok</p>";
-else
+else {
 	echo '<h3>Objetivos importantes sem metas</h3>';	
 	echo '<ul>';
 	while ($line = mysqli_fetch_assoc($result)) {
@@ -32,30 +33,35 @@ else
 			echo "<li>$objective_description</li>";
 		}
 	echo '</ul>';
+	}
 
 //print_r($objectives);
 
-$sql = "SELECT id, description, month_begin FROM objectives WHERE hide = 0";
+$sql = "select goals.description, objectives.importance from objectives JOIN goals WHERE goals.objective_id = objectives.id AND goals.id NOT IN (select goal_id FROM tasks where tasks.day != 'NULL') AND objectives.importance = 'high'";
 
 $result = query_or_die_trying($sql);
 
-echo "<p>Objetivos não contemplados</p>";
+$count = mysqli_num_rows($result);
 
-echo "<ul>";
+if ($count == 0)
+	echo "<p>Metas importantes associadas com tarefas: ok</p>";
+else {
 
-//	echo date('n');
+	echo "<h3>Metas importantes não contempladas</h3>";
 
-while ($line = mysqli_fetch_assoc($result)) {
-		//print_r($line);
-		$tmp_id = $line['id'];
-		$description = $line['description'];
-		$month_begin = $line['month_begin'];
-		if (!array_key_exists($tmp_id, $objectives) && (date('n')>=$month_begin))
-			echo "<li>Objetivo $description não contemplado </li>";
+	echo "<ul>";
+
+	//	echo date('n');
+
+	while ($line = mysqli_fetch_assoc($result)) {
+			//print_r($line);
+			$tmp_id = $line['id'];
+			$description = $line['description'];
+			echo "<li>$description</li>";
+		}
+
+	echo "</ul>";
 	}
-
-echo "</ul>";
-	
 ?>
 
 </ul>
@@ -70,15 +76,11 @@ $result = query_or_die_trying($sql);
 
 if ($result) {
 
-	$count = mysqli_num_rows($result);
-	echo "Qtdade de resultados: " . $count;
-
 	$line_count = 0;
 	if ($count >= 0) {
 
-		echo "<p>Tarefas</p>";
+		echo "<h3>Tarefas não alocadas</h3>";
 
-		echo "<p>Tarefas possíveis</p>";
 		echo "<table><tr><th>Descrição</th><th>Data limite/Acomp.</th><th>Qtdade adiament.</th><th>Categoria</th><th>Links</th></tr>";
 
 
