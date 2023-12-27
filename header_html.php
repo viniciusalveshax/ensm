@@ -61,6 +61,7 @@ include "ascii_art.php";
 <li><a href="add_context.php">Contexto</a></li>
 <li><a href="add_goal.php">Meta</a></li>
 <li><a href="add_objective.php">Objetivo</a></li>
+<li><a href="add_routine.php">Rotina</a></li>
 <li><a href="add_task.php">Tarefa</a></li>
 
 <li>Listar</li>
