@@ -6,10 +6,11 @@ require "utils.php";
 
 
 $obj_description = $_POST["description"];
+$importance = $_POST["importance"];
 
-$sql = "INSERT INTO objectives (description) VALUES ('" . $obj_description . "')"; 
+$sql = "INSERT INTO objectives (description, importance) VALUES ('$obj_description', '$importance')"; 
 
-echo $sql;
+//echo $sql;
 
 $result = query_or_die_trying($sql);
 
