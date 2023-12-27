@@ -52,6 +52,41 @@ ul.footer li {
 // Gerado com ajuda de https://manytools.org/hacker-tools/convert-images-to-ascii-art/go/
 include "ascii_art.php";
 
+?>
+
+<hr />
+<h4>Adicionar</h4>
+<ul class="footer">
+<li><a href="add_category.php">Categoria</a></li>
+<li><a href="add_context.php">Contexto</a></li>
+<li><a href="add_objective.php">Objetivo</a></li>
+<li><a href="add_task.php">Tarefa</a></li>
+</ul>
+
+<h4>Listar</h4>
+<ul class="footer">
+<li><a href="list_categories.php">Categorias</a></li>
+<li><a href="list_contexts.php">Contextos</a></li>
+<li><a href="list_objectives.php">Objetivos</a></li>
+<li><a href="list_tasks.php">Tarefas (todas)</a></li>
+<?php 
+	$day = date('w');
+	echo "<li><a href=\"list_tasks.php?day=" . $day . "\">Tarefas (hoje)</a></li>";
+?>
+</ul>
+
+
+<h4>Outras</h4>
+<ul class="footer">
+	<li><a href="review_daily.php">Revisão diária</a></li>
+	<li><a href="review.php">Revisão semanal</a></li>
+	<li><a href="review_past.php">Semanas anteriores</a></li>
+	
+</ul>
+
+
+<?php
+
 if (isset($_SESSION["msg"])) {
 	echo "<h3>Sessão: " . $_SESSION["msg"] . "</h3>";
 	unset($_SESSION["msg"]);
