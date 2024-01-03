@@ -20,6 +20,9 @@ echo $description;
 echo $day;
 echo "<br />Prioridade:$priority;";
 
+if (!$goal_id)
+	$goal_id = 0;
+
 $sql = "UPDATE tasks SET description=\"$description\", day=$day, goal_id=$goal_id, delays=$delays, priority=$priority, due_date=$due_date,followup=$followup,followup_date=$followup_date, done=FALSE WHERE id = $id";
 
 $result = query_or_die_trying($sql);
