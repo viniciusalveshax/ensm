@@ -24,7 +24,7 @@ $count = mysqli_num_rows($result);
 $objectives = array();
 
 if ($count == 0)
-	echo "<p>Objetivos importantes contemplados com metas: ok</p>";
+	echo "<p>Objetivos importantes não contemplados com metas: nenhum</p>";
 else {
 	echo '<h3>Objetivos importantes sem metas</h3>';	
 	echo '<ul>';
@@ -37,14 +37,14 @@ else {
 
 //print_r($objectives);
 
-$sql = "select goals.description, objectives.importance from objectives JOIN goals WHERE goals.objective_id = objectives.id AND goals.id NOT IN (select goal_id FROM tasks where tasks.day != 'NULL') AND objectives.importance = 'high'";
+$sql = "select goals.description, objectives.importance from objectives JOIN goals WHERE goals.objective_id = objectives.id AND goals.id NOT IN (select goal_id FROM tasks where tasks.day != 'NULL' and tasks.hide=0 AND tasks.done=0 and tasks.goal_id != 'NULL') AND objectives.importance = 'high'";
 
 $result = query_or_die_trying($sql);
 
 $count = mysqli_num_rows($result);
 
 if ($count == 0)
-	echo "<p>Metas importantes associadas com tarefas: ok</p>";
+	echo "<p>Metas importantes não associadas com tarefas: nenhuma</p>";
 else {
 
 	echo "<h3>Metas importantes não contempladas</h3>";
