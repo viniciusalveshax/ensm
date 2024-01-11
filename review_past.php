@@ -12,14 +12,13 @@ require "utils.php";
 
 <?php
 
-$sql = "SELECT * from tasks";
+$sql = "SELECT * from tasks WHERE tasks.datetime_creation > '2024/1/1 00:00:00' ";
 
 $result = query_or_die_trying($sql);
 
 if ($result) {
 
 	$count = mysqli_num_rows($result);
-	echo "Qtdade de resultados (total): " . $count;
 
 	$done_weekly_count = array();
 	$created_weekly_count = array();
@@ -27,6 +26,7 @@ if ($result) {
 	$hide_count = 0;
 
 	$current_week_number=date("W");
+	$current_year_number=date("Y");
 
 	if ($count >= 0) {
 
@@ -76,8 +76,17 @@ if ($result) {
 		}
 	}
 	
-	echo "<h3>Por semana</h3>";
-	
+
+	echo "<h3> Tarefas feitas na última semana (" . count($last_week_done_tasks) . "): </h3>";
+	echo "<ul>";
+	foreach($last_week_done_tasks as $task) {
+		echo "<li>" . $task['description'] . "(" . category_name($task['category_id']) . ")</li>";
+		}
+	echo "</ul>";
+
+	echo "<h3>2024</h3>";
+
+	echo "<h4>Por semana</h4>";
 	// Armazena o saldo de tarefas
 	$total_diff = 0;
 	echo "<table>";
@@ -101,16 +110,8 @@ if ($result) {
 		}
 	echo "</table>";
 
-	echo "<h3> Tarefas feitas na última semana (" . count($last_week_done_tasks) . "): </h3>";
-	echo "<ul>";
-	foreach($last_week_done_tasks as $task) {
-		echo "<li>" . $task['description'] . "(" . category_name($task['category_id']) . ")</li>";
-		}
-	echo "</ul>";
 
-	echo "<h3>Total dif: $total_diff</h3>";
-
-	echo "<h3>Total (sem contar escondidas): " . ($total_diff - $hide_count) . "</h3>";
+	echo "<h4>Total dif: $total_diff - Sem contar escondidas: " . ($total_diff - $hide_count) . "</h4>";
 
 	}
 
