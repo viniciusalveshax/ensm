@@ -74,12 +74,14 @@ $sql = "SELECT * from tasks WHERE (done=false OR followup=true) AND hide=false O
 
 $result = query_or_die_trying($sql);
 
+$count = mysqli_num_rows($result);
+
 if ($result) {
 
 	$line_count = 0;
 	if ($count >= 0) {
 
-		echo "<h3>Tarefas não alocadas</h3>";
+		echo "<h3>Tarefas existentes: $count. Mostrando as não alocadas:</h3>";
 
 		echo "<table><tr><th>Descrição</th><th>Data limite/Acomp.</th><th>Qtdade adiament.</th><th>Categoria</th><th>Links</th></tr>";
 
