@@ -70,7 +70,7 @@ else {
 
 <?php
 
-$sql = "SELECT * from tasks WHERE (done=false OR followup=true) AND hide=false ORDER BY category_id, priority, delays DESC";
+$sql = "SELECT * from tasks WHERE done=false AND hide=false ORDER BY category_id, priority, delays DESC";
 
 $result = query_or_die_trying($sql);
 
