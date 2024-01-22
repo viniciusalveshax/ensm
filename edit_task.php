@@ -59,8 +59,7 @@ if ($result) {
 
 }
 
-/*
-$sql = "SELECT * FROM objectives"; 
+$sql = "SELECT * FROM categories"; 
 
 $result = query_or_die_trying($sql);
 
@@ -68,26 +67,21 @@ if ($result) {
 
 	$count = mysqli_num_rows($result);
 	
-	echo "<br />Qtdade de objetivos:  $count <br/>";
+	echo "<br>Categoria <select name=\"category_id\">";
 
-	//$line = mysqli_fetch_assoc($result);
-	
-	echo "Objetivo <select name=\"objective_id\">";
-
-	$objectives = array();
+	$categories = array();
 	while ($line = mysqli_fetch_assoc($result)) {
 		$tmp_id = $line['id'];
 		$tmp_description = $line['description'];
-		$objectives[$tmp_id] = $tmp_description;
-
+		$categories[$tmp_id] = $tmp_description;
 	}
 
-	show_selected_option($task['objective_id'], $objectives);
+	show_selected_option($task['category_id'], $categories);
 
-	
 	echo "</select>";
 
-}*/
+}
+
 
 ?>
 
@@ -122,7 +116,7 @@ Data para acompanhar
 <input type="text" name="followup_date" value="<?php echo $task['followup_date']; ?>" /><br />
 
 <p>
-<input type="submit" value="Cadastrar" />
+<input type="submit" value="Salvar" />
 </p>
 
 </form>
