@@ -134,11 +134,13 @@ if ($result) {
 		}
 	echo "</table>";
 
+	$total_minus_hidden = $total_diff - $hide_count;
+	$average_created = $total_minus_hidden / $current_week_number;
 	$average_done = $total_done / $current_week_number;
 
-	echo "<h4>Total dif: $total_diff - Sem contar escondidas: " . ($total_diff - $hide_count) . "</h4>";
+	echo "<h4>Total dif: $total_diff - Sem contar escondidas: $total_minus_hidden </h4>";
 	echo "<h4>Total de tarefas criadas: $total_created - Total de tarefas feitas $total_done</h4>";
-	echo "<h4>Média das tarefas feitas por semana: $average_done</h4>";
+	echo "<h4>Média semana: Criadas $average_created | Feitas $average_done</h4>";
 
 	}
 
