@@ -50,7 +50,7 @@ if ($result) {
 			if ($create_year_number == $current_year_number) {
 				//create_weekly_count armazenada o número de tarefas criadas esse ano
 				//se a chave já existe então aumenta, senão inicializa
-				if (array_key_exists($create_week_number, $create_weekly_count))
+				if ($create_weekly_count && array_key_exists($create_week_number, $create_weekly_count))
 					$create_weekly_count[$create_week_number]++;
 				else
 					$create_weekly_count[$create_week_number] = 1;
@@ -134,11 +134,11 @@ if ($result) {
 		}
 	echo "</table>";
 
-	$total_minus_hidden = $total_diff - $hide_count;
+	$total_minus_hidden = $total_created - $hide_count;
 	$average_created = $total_minus_hidden / $current_week_number;
 	$average_done = $total_done / $current_week_number;
 
-	echo "<h4>Total dif: $total_diff - Sem contar escondidas: $total_minus_hidden </h4>";
+	echo "<h4>Total dif: $total_diff - Sem contar escondidas: " . ($total_diff - $hide_count) . "</h4>";
 	echo "<h4>Total de tarefas criadas: $total_created - Total de tarefas feitas $total_done</h4>";
 	echo "<h4>Média semana: Criadas $average_created | Feitas $average_done</h4>";
 
