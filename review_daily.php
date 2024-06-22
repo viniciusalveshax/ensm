@@ -37,6 +37,7 @@ if ($result) {
 
 		echo "<p>Tarefas da semana</p>";
 		echo "<table><tr><th>Descrição</th><th>Data limite/Adiamentos</th><th>Categoria</th><th>Links</th></tr>";
+		echo "<tr><td></td><td></td><td></td><td><a href=\"delay_many.php\">Adiar vários</a></td></tr>";
 
 		$line_counter = 0;
 		foreach($tasks as $line) {
@@ -88,7 +89,7 @@ if ($result) {
 			if ($line['day'])
 				continue;
 			if ($line['due_date'] || $line['followup_date']) {
-				$today = date_create(date());
+				$today = date_create(date('Y-m-d H:i:s'));
 				//var_dump($today);
 				//var_dump($tmp_due_date);
 				
